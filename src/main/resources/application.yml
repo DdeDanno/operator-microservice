@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: operator-microservice
+
+  # Configuración básica de eureka
+  eureka:
+    client:
+      service-url:
+        defaultZone: ${eureka_url:http://localhost:8761/eureka}
+
+  # Base de datos H2
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password: password
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  # Enable H2 console (optional, for debugging)
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
